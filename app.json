@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "coder-app",
-    "slug": "coder-app",
+    "name": "Book Tracker",
+    "slug": "Book Tracker",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
