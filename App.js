@@ -15,18 +15,21 @@ import Main from "./src/screens/Main";
 import Loading from './src/screens/Loading';
 import Book from './src/screens/Book';
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
 
-  const [loaded] = useFonts({
-    'weatpoint': require('./assets/fonts/weatpoint.regular.ttf'),
+  const [fontsLoaded] = useFonts({
+    'Weatpoint-Regular': require('./assets/fonts/Weatpoint-Regular.ttf'),
   });
 
-  React.useEffect(() => {
-    if (loaded) {
+  useEffect(() => {
+    if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
+  }, [fontsLoaded]);
 
-  }, [loaded]);
+
 
   const [books, setBooks] = useState([
     {
@@ -124,6 +127,10 @@ export default function App() {
     setBooks((oldArray) => oldArray.filter((item) => item.id !== id));
     setSelectedItem({});
   };
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   if (isLoading) {
     return (

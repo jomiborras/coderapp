@@ -53,6 +53,7 @@ const Book = ({ close, selected, deleteBook, readBook }) => {
                     </View>
                 </View>
                 <View style={styles.infoStatus}>
+                    {/* EL TITLE NO PUEDE SER UN ICONO HACER REFACTOR A PRESSABLE*/}
                     <ActionButton
                         title={
                             <Icon
@@ -63,6 +64,7 @@ const Book = ({ close, selected, deleteBook, readBook }) => {
                             />}
                         buttonFunction={() => readBook(selected.id)}
                     />
+                    {/* EL TITLE NO PUEDE SER UN ICONO HACER REFACTOR A PRESSABLE*/}
                     <ActionButton
                         title={
                             <Icon
