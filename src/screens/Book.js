@@ -1,7 +1,5 @@
 import { View, Pressable, Text, ActivityIndicator, StyleSheet, Image } from 'react-native';
-import COLORS from '../constants/Colors';
 
-import Icon from 'react-native-vector-icons/Feather';
 import ActionButton from '../components/ActionButton';
 import Title from '../components/Title';
 import Colors from '../constants/Colors';
@@ -10,32 +8,12 @@ import Colors from '../constants/Colors';
 
 const Book = ({ close, selected, deleteBook, readBook }) => {
 
-    const renderStars = (numStars) => {
-        const stars = [];
-        for (let i = 0; i < numStars; i++) {
-            stars.push(
-                <Icon
-                    name='star'
-                    size={20}
-                    color={COLORS.primary}
-                    key={i}
-                />
-            );
-        }
-        return stars;
-    };
-
     return (
         <View styles={styles.container}>
             <View styles={styles.header}>
-                <Pressable
-                    onPress={() => close()}>
-                    <Icon
-                        name={"chevron-left"}
-                        size={25}
-                        color={COLORS.primary}
-                    />
-                </Pressable>
+                {/* <Pressable onPress={() => close()}>
+                    <Text>Volver</Text>
+                </Pressable> */}
                 <Title
                     title={selected.name}
                     style={styles.title}
@@ -47,33 +25,18 @@ const Book = ({ close, selected, deleteBook, readBook }) => {
             </View>
             <View style={styles.infoContainer}>
                 <View style={styles.info}>
-                    <Text>{`Author: ${selected.author}`}</Text>
-                    <View style={styles.rate}>
-                        {renderStars(selected.rate)}
-                    </View>
+                    <Text>{selected.author}</Text>
                 </View>
                 <View style={styles.infoStatus}>
-                    {/* EL TITLE NO PUEDE SER UN ICONO HACER REFACTOR A PRESSABLE*/}
+
                     <ActionButton
-                        title={
-                            <Icon
-                                name={selected.read ? "book" : "book-open"}
-                                size={25}
-                                color={COLORS.primary}
-                                style={[styles.button, selected.read ? styles.read : styles.reading]}
-                            />}
-                        buttonFunction={() => readBook(selected.id)}
+                        title={"Volver"}
+                        buttonFunction={() => close()}
                     />
-                    {/* EL TITLE NO PUEDE SER UN ICONO HACER REFACTOR A PRESSABLE*/}
+
                     <ActionButton
-                        title={
-                            <Icon
-                                name={"trash-2"}
-                                size={25}
-                                color={COLORS.primary}
-                                style={[styles.button, styles.danger]}
-                            />}
-                        buttonFunction={() => deleteBook(selected.id)}
+                        title={"Borrar"}
+                        buttonFunction={() => deleteBook(selected.id)}danger
                     />
                 </View>
             </View>
@@ -86,18 +49,20 @@ export default Book;
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
+        flex: 1,
+        paddingTop: 20,
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingHorizontal: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingTop: 20,
     },
     title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        textAlign: 'center',
+        fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
     },
     button: {
         marginLeft: 10,
@@ -106,16 +71,13 @@ const styles = StyleSheet.create({
         width: 25,
     },
     imageContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        // flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     },
     image: {
-        width: '90%',
-        height: undefined,
-        aspectRatio: 3 / 4,
-        resizeMode: 'contain',
-        shadowColor: '#000',
+        width: 200,
+    height: 300,
         shadowOffset: {
             width: 0,
             height: 2,
@@ -125,13 +87,14 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     infoContainer: {
-        marginTop: 10,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingBottom: 20,
     },
     info: {
-        marginLeft: 10,
-        justifyContent: 'start',
+        flex: 1,
     },
     infoStatus: {
         flexDirection: 'row',
@@ -140,8 +103,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     button: {
-        padding: 10,
-        borderRadius: '50%'
+        paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 5,
+    marginHorizontal: 10,
+    borderWidth: 1,
     },
     read: {
         backgroundColor: '#3A85E3',

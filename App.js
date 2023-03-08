@@ -136,30 +136,29 @@ export default function App() {
     return (
       <Loading />
     );
-  }  else {
-
+  }  else if(bookScreen){
     return (
-      // MAIN SCREEN
       <View style={styles.screen}>
-        {
-          bookScreen ?
-
-            <Book
+         <Book
               close={bookUnit}
               selected={selectedItem}
               deleteBook={onDeleteBook}
               readBook={onReadBook}
-            /> :
+            />
+      </View>
+    );
+    } else {
+    return (
+      // MAIN SCREEN
+      <View style={styles.screen}>       
             <Main
               books={books}
               showBook={bookUnit}
               openBook={openBook}
             />
-        }
-
       </View>
     );
-
+        
   }
 }
 
