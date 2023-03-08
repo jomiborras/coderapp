@@ -6,6 +6,7 @@ import COLORS from '../constants/Colors';
 const ActionButton = ({ title, buttonFunction }) => {
     return (
         <View style={styles.buttonContainer}>
+            {/* EL TITLE NO PUEDE SER UN ICONO HACER REFACTOR A PRESSABLE*/}
             <Button
                 title={title}
                 onPress={() => buttonFunction()}
